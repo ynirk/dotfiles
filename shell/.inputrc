@@ -1,0 +1,5 @@
+$include /etc/inputrc
+
+# map "up" and "down" to search history based on current cmdline ^[[A^[[B
+"\e[A": history-search-backward
+"\e[B": history-search-forward

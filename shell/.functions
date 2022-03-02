@@ -1,0 +1,35 @@
+#
+# Helper Functions
+#
+#
+ddcci_brightness(){
+  sudo modprobe -r ddcci_backlight && sudo modprobe ddcci_backlight
+}
+
+dcleanup(){
+  docker rm -v $(docker ps -a -q -f status=exited)
+  docker rmi $(docker images -f "dangling=true" -q)
+}
+
+del_stopped(){
+  local name=$1
+  local state
+  state=$(docker inspect --format "{{.State.Running}}" "$name" 2>/dev/null)
+
+  if [[ "$state" == "false" ]]; then
+    docker rm "$name"
+  fi
+}
+
+del_gpg_stubs() {
+  if [ -n "$KEYID" ]; then
+                for keystub in $(gpg --with-keygrip --list-secret-keys $KEYID &>/dev/null | grep Keygrip | awk '{print $3}'); do
+                  rm $HOME/.gnupg/private-keys-v1.d/$keystub.key &>/dev/null;
+                done;
+    gpg --card-status &>/dev/null
+  fi
+}
+
+yubikey_reset_gpg() {
+  gpg-connect-agent updatestartuptty /bye
+}

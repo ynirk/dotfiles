@@ -1,0 +1,43 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$cmd_duration\
+$line_break\
+$character"""
+
+[username]
+style_user = "green"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[@$hostname](green) "
+disabled = false
+
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+style = "blue"
+read_only=" "
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+style = "purple"
+
+[git_status]
+format = "[$all_status]($style) "
+style = "purple"
+modified = "*"
+
+[terraform]
+format = "[\\[TF $version\\]]($style) "
+style = "magenta"
+
+[cmd_duration]
+format = "[$duration](yellow)"
