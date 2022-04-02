@@ -23,6 +23,7 @@ disabled = false
 [directory]
 truncation_length = 8
 truncation_symbol = "…/"
+truncate_to_repo = false
 style = "blue"
 read_only=" "
 

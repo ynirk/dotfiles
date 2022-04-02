@@ -15,13 +15,45 @@ export HIST_FIND_NO_DUPS
 export HIST_SAVE_NO_DUPS
 export HIST_IGNORE_SPACE
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 unsetopt nomatch
+
+case `uname` in
+  Darwin)
+    # homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    if type brew &>/dev/null; then
+      FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+      FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+      autoload -Uz compinit
+      compinit
+    fi
+
+    alias ls='gls --color=auto'
+    alias cat='bat -p'
+    alias find='fd'
+    alias vim='nvim'
+    alias vi='nvim'
+  ;;
+  Linux)
+    # make less more friendly for non-text input files, see lesspipe(1)
+    [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+    # pyenv
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+
+    # pinentry
+    export PINENTRY_USER_DATA=Linux
+
+    alias cat='batcat -p'
+    alias find='fdfind'
+  ;;
+esac
 
 # yubikey ssh
 export KEYID=0xDDA8DEDBF8B81076
@@ -36,29 +68,23 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init -)"
 
-# tfenv
+## tfenv
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 export AWS_PAGER=""
 
 # personal env
 for file in ~/.{functions,work}; do
-  	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
-		  source "$file"
-	fi
+        if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+                  source "$file"
+        fi
 done
 unset file
 
 # alias
 alias grep='rg'
 alias diff='diff --color=auto'
-alias cat='batcat -p'
-alias find='fdfind'
 alias ll='ls -alsh'
