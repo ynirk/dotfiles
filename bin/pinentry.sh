@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # Choose pinentry program based on OS
 # based on $PINENTRY_USER_DATA value
 
