@@ -33,6 +33,9 @@ case `uname` in
       compinit
     fi
 
+    export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+
     alias ls='gls --color=auto'
     alias cat='bat -p'
     alias find='fd'
