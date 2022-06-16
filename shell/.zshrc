@@ -36,11 +36,15 @@ case `uname` in
     export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 
+    # Rancher desktop
+    export PATH="$HOME/.rd/bin:$PATH"
+
     alias ls='gls --color=auto'
     alias cat='bat -p'
     alias find='fd'
     alias vim='nvim'
     alias vi='nvim'
+    alias docker='nerdctl'
   ;;
   Linux)
     # make less more friendly for non-text input files, see lesspipe(1)
@@ -57,6 +61,12 @@ case `uname` in
     alias find='fdfind'
   ;;
 esac
+
+# go
+export GOPATH=$HOME/go
+export GOROOT=$(go env GOROOT)
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOROOT/bin
 
 # yubikey ssh
 export KEYID=0xDDA8DEDBF8B81076
