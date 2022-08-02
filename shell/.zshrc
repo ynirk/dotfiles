@@ -65,7 +65,7 @@ esac
 # go
 export GOPATH=$HOME/go
 export GOROOT=$(go env GOROOT)
-export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # yubikey ssh
@@ -99,5 +99,4 @@ unset file
 
 # alias
 alias grep='rg'
-alias diff='diff --color=auto'
 alias ll='ls -alsh'

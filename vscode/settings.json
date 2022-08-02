@@ -12,5 +12,8 @@
     "debug.console.fontSize": 13,
     "markdown.preview.fontSize": 13,
     "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono"
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false
 }
