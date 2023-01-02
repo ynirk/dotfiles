@@ -3,6 +3,8 @@
 [user]
     name = ynirk
     email = julien.lavesque@gmail.com
-    signingkey = 0xDDA8DEDBF8B81076
+    signingkey = ~/.ssh/id_ed25519_sk.pub
 [commit]
     gpgSign = true
+[gpg]
+  format = ssh

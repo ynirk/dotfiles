@@ -15,5 +15,8 @@
     "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
     "security.workspace.trust.untrustedFiles": "open",
     "git.enableSmartCommit": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "files.associations": {
+        "*.ndjson": "json"
+    }
 }
