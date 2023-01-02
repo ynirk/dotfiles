@@ -68,11 +68,11 @@ export GOROOT=$(go env GOROOT)
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-# yubikey ssh
-export KEYID=0xDDA8DEDBF8B81076
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+# yubikey gpg ssh
+#export KEYID=0xDDA8DEDBF8B81076
+#export GPG_TTY="$(tty)"
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
 
 # starship
 eval "$(starship init zsh)"
